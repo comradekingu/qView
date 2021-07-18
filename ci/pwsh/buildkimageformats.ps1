@@ -15,7 +15,8 @@ if ($IsWindows) {
 } else {
     sudo apt-get install ninja-build
     brew update
-    brew install nasm extra-cmake-modules openexr libheif karchive
+    brew install nasm openexr libheif karchive
+    brew install --build-from-source extra-cmake-modules
 }
 
 # Build
