@@ -16,8 +16,11 @@ if ($IsWindows) {
     sudo apt-get install ninja-build
     brew update
     brew install nasm openexr libheif karchive
-    brew install --build-from-source extra-cmake-modules
+    # Build extra-cmake-modules
+    & "$env:BUILD_REPOSITORY_LOCALPATH/ci/pwsh/buildecm.ps1"
 }
+
+
 
 # Build
 
