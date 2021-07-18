@@ -19,3 +19,5 @@ if ($IsWindows) {
     make
     sudo make install
 }
+
+cd ../
