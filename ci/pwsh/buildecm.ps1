@@ -11,7 +11,7 @@ if ($IsWindows) {
 }
 
 # Build
-cmake -DKIMAGEFORMATS_HEIF=ON .
+cmake .
 
 if ($IsWindows) {
     nmake

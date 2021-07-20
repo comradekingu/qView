@@ -36,7 +36,7 @@ if ($IsWindows) {
 $env:libavif_DIR = "libavif/build/installed/usr/local/lib/cmake/libavif/"
 
 
-cmake -DKIMAGEFORMATS_HEIF=ON .
+cmake -DCMAKE_BUILD_TYPE=Release -DKIMAGEFORMATS_HEIF=ON .
 
 if ($IsWindows) {
     nmake

@@ -5,6 +5,7 @@ steps:
   displayName: Build APNG plugin
 
 - pwsh: ci/pwsh/buildkimageformats.ps1
+  condition: ne( variables['skipHardPlugins'], 'true' )
   displayName: Build KImageFormats plugin
 
   # HEIF
