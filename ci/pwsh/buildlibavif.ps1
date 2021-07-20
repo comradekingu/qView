@@ -18,7 +18,8 @@ Set-Alias -Name meson -Value "python -m meson"
 cd ext
 
 if ($IsWindows) {
-    
+    $env:Path += ";C:\Program Files\NASM"
+    cmd /c dav1d.cmd
 } else {
     bash dav1d.cmd
 }

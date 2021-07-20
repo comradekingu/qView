@@ -8,7 +8,12 @@ git checkout $(git describe --abbrev=0).substring(0, 7)
 
 # Get dependencies
 if ($IsWindows) {
-    choco install ninja nasm
+    if ([Environment]::Is64BitOperatingSystem) {
+        $env:VCPKG_DEFAULT_TRIPLET = "x64-windows"
+    }
+    
+    & "$env:BUILD_REPOSITORY_LOCALPATH/ci/pwsh/buildecm.ps1"
+    & "$env:VCPKG_INSTALLATION_ROOT/vcpkg.exe" install libheif libavif openexr
 } elseif ($IsMacOS) {
     brew update
     brew install ninja nasm extra-cmake-modules libheif karchive
@@ -31,16 +36,12 @@ if ($IsWindows) {
 
 # Build libavif dependency
 
-& "$env:BUILD_REPOSITORY_LOCALPATH/ci/pwsh/buildlibavif.ps1"
+# & "$env:BUILD_REPOSITORY_LOCALPATH/ci/pwsh/buildlibavif.ps1"
 
-$env:libavif_DIR = "libavif/build/installed/usr/local/lib/cmake/libavif/"
+# $env:libavif_DIR = "libavif/build/installed/usr/local/lib/cmake/libavif/"
 
 
-cmake -DCMAKE_BUILD_TYPE=Release -DKIMAGEFORMATS_HEIF=ON .
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DKIMAGEFORMATS_HEIF=ON -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_INSTALLATION_ROOT\scripts\buildsystems\vcpkg.cmake" .
 
-if ($IsWindows) {
-    nmake
-} else {
-    make
-    sudo make install
-}
+ninja
+ninja install
