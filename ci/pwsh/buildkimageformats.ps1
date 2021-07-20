@@ -11,7 +11,7 @@ if ($IsWindows) {
     choco install ninja nasm
 } elseif ($IsMacOS) {
     brew update
-    brew install ninja nasm extra-cmake-modules openexr libheif karchive
+    brew install ninja nasm extra-cmake-modules libheif karchive
 } else {
     sudo apt-get install ninja-build
     brew update

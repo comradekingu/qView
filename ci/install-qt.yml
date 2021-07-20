@@ -37,6 +37,7 @@ steps:
 - pwsh: |
     cd ${{ parameters.version }}/*/
     echo "##vso[task.setvariable variable=Qt5_DIR]$PWD"
+    echo "##vso[task.setvariable variable=CMAKE_PREFIX_PATH]$PWD"
     cd bin
     echo "##vso[task.prependpath]$PWD"
   displayName: 'Add Qt to path and set Qt5_DIR'
