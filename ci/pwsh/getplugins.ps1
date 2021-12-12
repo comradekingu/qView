@@ -32,7 +32,7 @@ function Download-Release {
 if ($IsWindows) {
     $file1 = "kimageformats-windows-5.15.2.zip"
     $file2 = "qtapng-linux-5.15.2.zip"
-} else if ($IsMacOS) {
+} elseif ($IsMacOS) {
     $file1 = "kimageformats-macos-5.15.2.zip"
     $file2 = "qtapng-windows-5.15.2.zip"
 } else {
