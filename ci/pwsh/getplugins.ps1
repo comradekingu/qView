@@ -34,10 +34,10 @@ if ($IsWindows) {
     $file2 = "qtapng-linux-5.15.2"
 } elseif ($IsMacOS) {
     $file1 = "kimageformats-macos-5.15.2"
-    $file2 = "qtapng-windows-5.15.2"
+    $file2 = "qtapng-macos-5.15.2"
 } else {
     $file1 = "kimageformats-linux-5.15.2"
-    $file2 = "qtapng-windows-5.15.2"
+    $file2 = "qtapng-linux-5.15.2"
 }
 
 Download-Release -File $file1
