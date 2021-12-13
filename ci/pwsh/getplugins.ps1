@@ -52,8 +52,12 @@ try {
 
     } elseif ($IsMacOS) {
         mkdir -p bin/qView.app/Contents/PlugIns/imageformats/
-        cp $file1/*.so bin/qView.app/Contents/PlugIns/imageformats/*.dylib
-        cp $file2/* bin/qView.app/Contents/PlugIns/imageformats/*
+
+        # change all .so to .dylib
+        Get-ChildItem -Path $file1/*.so -Recurse | Rename-Item -NewName {"$($_.BaseName).dylib"}
+        cp $file1/* bin/qView.app/Contents/PlugIns/imageformats/
+
+        cp $file2/* bin/qView.app/Contents/PlugIns/imageformats/
     }
 
     Write-Host "Successfully copied plugins"

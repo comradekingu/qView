@@ -1,7 +1,6 @@
 steps:
 - pwsh: |
     ci/pwsh/windeployqt.ps1
-    ci/pwsh/copyplugins.ps1
 
     mv bin\qView.exe "bin\qView$(nightlyString)$(buildNumString).exe"
 
@@ -12,8 +11,6 @@ steps:
   displayName: 'Run windeployqt'
 
 - script: |
-    ci/pwsh/copyplugins.ps1
-
     if [ $(nightlyString) == -nightly ]; then
           VERSION=$(Build.BuildNumber)
     else
