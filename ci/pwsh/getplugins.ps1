@@ -46,10 +46,12 @@ Download-Release -File $file2
 
 try {
     if ($IsWindows) {
+        mkdir -p bin\imageformats\
         copy $file1\* bin\imageformats\
         copy $file2\* bin\imageformats\
 
     } elseif ($IsMacOS) {
+        mkdir -p bin/qView.app/Contents/PlugIns/imageformats/
         cp $file1/*.so bin/qView.app/Contents/PlugIns/imageformats/*.dylib
         cp $file2/* bin/qView.app/Contents/PlugIns/imageformats/*
     }
