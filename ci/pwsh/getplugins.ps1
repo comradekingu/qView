@@ -1,8 +1,6 @@
 #! /usr/bin/pwsh
 
 # https://gist.github.com/MarkTiedemann/c0adc1701f3f5c215fc2c2d5b1d5efd3
-
-
 function Download-Release {
     param (
         $File
@@ -14,7 +12,7 @@ function Download-Release {
     Write-Host Determining latest release
     $tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
 
-    $download = "https://github.com/$repo/releases/download/$tag/$file"
+    $download = "https://github.com/$repo/releases/download/$tag/$file.zip"
     $name = $file.Split(".")[0]
     $zip = "$name-$tag.zip"
     $dir = "$name-$tag"
@@ -25,19 +23,21 @@ function Download-Release {
     Write-Host Extracting release files
     Expand-Archive $zip -Force
 
+    Rename-Item $dir $File
+
     # Removing temp files
     Remove-Item $zip -Force
 }
 
 if ($IsWindows) {
-    $file1 = "kimageformats-windows-5.15.2.zip"
-    $file2 = "qtapng-linux-5.15.2.zip"
+    $file1 = "kimageformats-windows-5.15.2"
+    $file2 = "qtapng-linux-5.15.2"
 } elseif ($IsMacOS) {
-    $file1 = "kimageformats-macos-5.15.2.zip"
-    $file2 = "qtapng-windows-5.15.2.zip"
+    $file1 = "kimageformats-macos-5.15.2"
+    $file2 = "qtapng-windows-5.15.2"
 } else {
-    $file1 = "kimageformats-linux-5.15.2.zip"
-    $file2 = "qtapng-windows-5.15.2.zip"
+    $file1 = "kimageformats-linux-5.15.2"
+    $file2 = "qtapng-windows-5.15.2"
 }
 
 Download-Release -File $file1
