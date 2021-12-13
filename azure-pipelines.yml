@@ -44,10 +44,12 @@ jobs:
         echo "##vso[task.setvariable variable=nightlyDefines]$(defines)"
         echo "##vso[task.setvariable variable=nightlyString]-nightly"
         echo "##vso[task.setvariable variable=buildNumString].$(Build.BuildNumber)"
+        echo "##vso[task.setvariable variable=isNightly]true"
       else
-        echo "##vso[task.setvariable variable=nightlyDefines]false"
-        echo "##vso[task.setvariable variable=nightlyString]false"
-        echo "##vso[task.setvariable variable=buildNumString]false"
+        echo "##vso[task.setvariable variable=nightlyDefines]"
+        echo "##vso[task.setvariable variable=nightlyString]"
+        echo "##vso[task.setvariable variable=buildNumString]"
+        echo "##vso[task.setvariable variable=isNightly]false"
       fi
     condition: and(succeeded(), ne(variables['dontPublish'], 'true'))
     displayName: 'Set matrix env variables'
