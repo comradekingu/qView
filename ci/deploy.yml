@@ -14,7 +14,8 @@ steps:
     if [ $(isNightly) == 'true' ]; then
           VERSION=$(Build.BuildNumber)
     else
-          VERSION=$(sed -n 's/[^0-9.]*//g;2p' qView.pro)
+          VERSION=$(LC_ALL=C sed -n -e '/^VERSION/p' qView.pro)
+          VERSION=${VERSION: -3}
     fi
     
     cd bin
@@ -36,7 +37,8 @@ steps:
     if [ $(nightlyString) == -nightly ]; then
           VERSION=$(nightlyString)
     else
-          VERSION=$(sed -n 's/[^0-9.]*//g;2p' qView.pro)
+          VERSION=$(LC_ALL=C sed -n -e '/^VERSION/p' qView.pro)
+          VERSION=${VERSION: -3}
     fi
     echo VERSION was set to $VERSION
     if [[ '$(extra_plugins_maybe)' == *"-extra-plugins"* ]]; then
