@@ -11,6 +11,9 @@ steps:
   displayName: 'Run windeployqt'
 
 - script: |
+    
+    pwsh ci/pwsh/copyplugins.ps1
+
     if [ $(isNightly) == 'true' ]; then
           VERSION=$(Build.BuildNumber)
     else
@@ -40,6 +43,7 @@ steps:
           VERSION=$(LC_ALL=C sed -n -e '/^VERSION/p' qView.pro)
           VERSION=${VERSION: -3}
     fi
+    
     echo VERSION was set to $VERSION
     if [[ '$(extra_plugins_maybe)' == *"-extra-plugins"* ]]; then
           PLUGINS=$(extra_plugins_maybe)
@@ -50,6 +54,7 @@ steps:
 
     mkdir -p bin/appdir/usr
     make install INSTALL_ROOT=bin/appdir
+    cp dist/linux/hicolor/scalable/apps/com.interversehq.qView.svg bin/appdir/
     cd bin
     rm qview
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/

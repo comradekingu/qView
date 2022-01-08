@@ -278,6 +278,8 @@ void MainWindow::settingsUpdated()
 
 
     ui->fullscreenLabel->setVisible(qvApp->getSettingsManager().getBoolean("fullscreendetails") && (windowState() == Qt::WindowFullScreen));
+
+    setWindowSize();
 }
 
 void MainWindow::shortcutsUpdated()
@@ -370,7 +372,7 @@ void MainWindow::populateOpenWithMenu(const QList<OpenWith::OpenWithItem> openWi
         {
             // If we are within the bounds of the open with list
             if (i < openWithItems.length())
-            {        
+            {
                 auto openWithItem = openWithItems.value(i);
 
                 action->setVisible(true);
@@ -436,14 +438,20 @@ void MainWindow::buildWindowTitle()
     // Update fullscreen label to titlebar text as well
     ui->fullscreenLabel->setText(newString);
 
-    if (getCurrentFileDetails().isPixmapLoaded)
-        windowHandle()->setFilePath(getCurrentFileDetails().fileInfo.absoluteFilePath());
-//    else
-//        windowHandle()->setFilePath("");
+    if (windowHandle() != nullptr)
+    {
+        if (getCurrentFileDetails().isPixmapLoaded)
+            windowHandle()->setFilePath(getCurrentFileDetails().fileInfo.absoluteFilePath());
+        else
+            windowHandle()->setFilePath("");
+    }
 }
 
 void MainWindow::setWindowSize()
 {
+    if (!getCurrentFileDetails().isPixmapLoaded)
+        return;
+
     int windowResizeMode = qvApp->getSettingsManager().getInteger("windowresizemode");
     qreal minWindowResizedPercentage = qvApp->getSettingsManager().getInteger("minwindowresizedpercentage")/100.0;
     qreal maxWindowResizedPercentage = qvApp->getSettingsManager().getInteger("maxwindowresizedpercentage")/100.0;
@@ -493,19 +501,20 @@ void MainWindow::setWindowSize()
         imageSize.setHeight(imageSize.height() + menuBar()->height());
 
     // Match center after new geometry
-    QRect rect = geometry();
-    QPoint prevCenter = rect.center();
-    rect.setSize(imageSize);
-    rect.moveCenter(prevCenter);
+    // This is smoother than a single geometry set for some reason
+    QRect oldRect = geometry();
+    resize(imageSize);
+    QRect newRect = geometry();
+    newRect.moveCenter(oldRect.center());
 
     // Ensure titlebar is not above the top of the screen
     const int titlebarHeight = QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
     const int topOfScreen = currentScreen->availableGeometry().y();
 
-    if (rect.y() < (topOfScreen + titlebarHeight))
-        rect.setY(topOfScreen + titlebarHeight);
+    if (newRect.y() < (topOfScreen + titlebarHeight))
+        newRect.setY(topOfScreen + titlebarHeight);
 
-    setGeometry(rect);
+    setGeometry(newRect);
 }
 
 //literally just copy pasted from Qt source code to maintain compatibility with 5.9 (although i've edited it now)
@@ -576,7 +585,7 @@ void MainWindow::openUrl(const QUrl &url)
         progressDialog->setMaximum(0);
 
         auto *tempFile = new QTemporaryFile(this);
-        tempFile->setFileTemplate(qvApp->applicationName() + ".XXXXXX.png");
+        tempFile->setFileTemplate(QDir::tempPath() + "/" + qvApp->applicationName() + ".XXXXXX.png");
 
         auto *saveFutureWatcher = new QFutureWatcher<bool>();
         connect(saveFutureWatcher, &QFutureWatcher<bool>::finished, this, [progressDialog, tempFile, saveFutureWatcher, this](){
@@ -650,7 +659,7 @@ void MainWindow::showFileInfo()
 }
 
 void MainWindow::askDeleteFile()
-{    
+{
     if (!qvApp->getSettingsManager().getBoolean("askdelete"))
     {
         deleteFile();
@@ -808,6 +817,8 @@ void MainWindow::copy()
 void MainWindow::paste()
 {
     const QMimeData *mimeData = QApplication::clipboard()->mimeData();
+    if (mimeData == nullptr)
+        return;
 
     if (mimeData->hasText())
     {
@@ -1033,6 +1044,7 @@ void MainWindow::toggleFullScreen()
     if (windowState() == Qt::WindowFullScreen)
     {
         setWindowState(storedWindowState);
+        setWindowSize();
     }
     else
     {

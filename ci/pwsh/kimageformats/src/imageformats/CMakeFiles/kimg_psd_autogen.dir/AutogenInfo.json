@@ -1,0 +1,110 @@
+{
+	"BUILD_DIR" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_psd_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats",
+	"CMAKE_EXECUTABLE" : "/usr/local/Cellar/cmake/3.21.0/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/CMakeLists.txt"
+	],
+	"CMAKE_SOURCE_DIR" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/psd_p.h",
+			"Mu",
+			"EWIEGA46WW/moc_psd_p.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_psd_autogen/include",
+	"MOC_COMPILATION_FILE" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_psd_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"KF_DEPRECATED_WARNINGS_SINCE=0x060000",
+		"KF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055100",
+		"QT_CORE_LIB",
+		"QT_DEPRECATED_WARNINGS_SINCE=0x060000",
+		"QT_DISABLE_DEPRECATED_BEFORE=0x050f00",
+		"QT_GUI_LIB",
+		"QT_MAC_USE_COCOA",
+		"QT_NO_CAST_FROM_ASCII",
+		"QT_NO_CAST_FROM_BYTEARRAY",
+		"QT_NO_CAST_TO_ASCII",
+		"QT_NO_FOREACH",
+		"QT_NO_KEYWORDS",
+		"QT_NO_NARROWING_CONVERSIONS_IN_CONNECT",
+		"QT_NO_URL_CAST_FROM_STRING",
+		"QT_STRICT_ITERATORS",
+		"QT_USE_QSTRINGBUILDER",
+		"_DARWIN_C_SOURCE",
+		"_LARGEFILE64_SOURCE",
+		"kimg_psd_EXPORTS"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats",
+		"/usr/local/Cellar/qt@5/5.15.2/lib/QtGui.framework",
+		"/usr/local/Cellar/qt@5/5.15.2/lib/QtGui.framework/Headers",
+		"/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers",
+		"/usr/local/Cellar/qt@5/5.15.2/lib/QtCore.framework",
+		"/usr/local/Cellar/qt@5/5.15.2/lib/QtCore.framework/Headers",
+		"/usr/local/Cellar/qt@5/5.15.2/mkspecs/macx-clang",
+		"/Library/Developer/CommandLineTools/usr/include/c++/v1",
+		"/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include",
+		"/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include",
+		"/Library/Developer/CommandLineTools/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/Library/Developer/CommandLineTools/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/local/Cellar/cmake/3.21.0/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_psd_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : 
+	[
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_hdr_autogen/mocs_compilation.cpp",
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_kra_autogen/mocs_compilation.cpp",
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_ora_autogen/mocs_compilation.cpp",
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_pcx_autogen/mocs_compilation.cpp",
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_pic_autogen/mocs_compilation.cpp",
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_ras_autogen/mocs_compilation.cpp",
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_rgb_autogen/mocs_compilation.cpp",
+		"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/kimg_xcf_autogen/mocs_compilation.cpp"
+	],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/CMakeFiles/kimg_psd_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/local/Cellar/qt@5/5.15.2/bin/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/CMakeFiles/kimg_psd_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/Users/benjaminowad/Documents/dev/qView/ci/pwsh/kimageformats/src/imageformats/psd.cpp",
+			"Mu",
+			null
+		]
+	],
+	"VERBOSITY" : 0
+}
